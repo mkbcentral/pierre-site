@@ -16,18 +16,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        /*
+
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
         CategoryTraining::insert([
             ['name' => 'Crypto'],
             ['name' => 'Data Science'],
             ['name' => 'Cybersécurité'],
             ['name' => 'Autres'],
         ]);
-        */
+
         CategoryPost::insert([
             ['name' => 'Crypto'],
             ['name' => 'Data Science'],
