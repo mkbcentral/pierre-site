@@ -9,11 +9,6 @@
             <span class="text-white font-semibold">Création</span>
         </nav>
     </div>
-    <div x-data="{ count: 0 }">
-        <button x-on:click="count++">Increment</button>
-
-        <span x-text="count"></span>
-    </div>
     <div class="admin-content-section ">
         <form wire:submit='store'>
             <div class="space-y-6">

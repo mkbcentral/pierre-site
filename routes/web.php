@@ -12,6 +12,9 @@ use App\Livewire\Admin\Form\NewChapterPage;
 use App\Livewire\Admin\Post\Form\CreatePost;
 use App\Livewire\Admin\Post\Form\EditPost;
 use App\Livewire\Admin\Post\ListPostAdmin;
+use App\Livewire\Admin\Tool\Form\CreateTool;
+use App\Livewire\Admin\Tool\Form\EditTool;
+use App\Livewire\Admin\Tool\ListToolsAdmin;
 use App\Livewire\Admin\TrainingPage;
 use App\Livewire\Pages\TrainingListPage;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +51,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::prefix('post')->group(function () {
             Route::get('/create', CreatePost::class)->name('admin.post.create');
             Route::get('/edit/{post}', EditPost::class)->name('admin.post.edit');
+        });
+        Route::get('/tools', ListToolsAdmin::class)->name('admin.tools');
+        Route::prefix('tool')->group(function () {
+            Route::get('/create', CreateTool::class)->name('admin.tool.create');
+            Route::get('/edit/{tool}', EditTool::class)->name('admin.tool.edit');
         });
     });
     Route::controller(SubscriptionController::class)->group(function () {

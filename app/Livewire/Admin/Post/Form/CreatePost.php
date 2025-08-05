@@ -8,9 +8,12 @@ use App\Models\CategoryPost;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+
+use function Illuminate\Log\log;
 
 class CreatePost extends Component
 {
@@ -40,13 +43,15 @@ class CreatePost extends Component
             if ($this->form->cover_image) {
                 $imagePath = $this->form->cover_image->store('posts', 'public');
                 $fields['cover_image'] = $imagePath;
+            } else {
+                $fields['user_id'] = Auth::id();
+                $this->form->create($fields);
+                session()->flash('success', __('Post created successfully.'));
+                $this->redirect(route('admin.posts'));
             }
-            $fields['user_id'] = Auth::id();
-            $this->form->create($fields);
-            session()->flash('success', __('Post created successfully.'));
-            $this->redirect(route('admin.posts'));
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
+            Log::error($exception);
         }
     }
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CategoryPost;
+use App\Models\CategoryTool;
 use App\Models\CategoryTraining;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
+        /*
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -29,8 +30,8 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Cybersécurité'],
             ['name' => 'Autres'],
         ]);
-
-        CategoryPost::insert([
+        */
+        CategoryTool::insert([
             ['name' => 'Crypto'],
             ['name' => 'Data Science'],
             ['name' => 'Cybersécurité'],
