@@ -42,6 +42,22 @@
                     <span class="ml-2">Outils</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('admin.students') }}"
+                    class="admin-sidebar-nav-item flex items-center px-3 py-2 rounded-lg transition-all duration-200
+                        {{ request()->routeIs('admin.students') ? 'bg-indigo-600 text-white font-semibold text-base shadow ring-1 ring-indigo-300 scale-100' : 'hover:bg-gray-700 hover:text-white' }}">
+                    <i class="fas fa-users w-6"></i>
+                    <span class="ml-2">Etudiant</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.transations') }}"
+                    class="admin-sidebar-nav-item flex items-center px-3 py-2 rounded-lg transition-all duration-200
+                        {{ request()->routeIs('admin.transations') ? 'bg-indigo-600 text-white font-semibold text-base shadow ring-1 ring-indigo-300 scale-100' : 'hover:bg-gray-700 hover:text-white' }}">
+                    <i class="fas fa-users w-6"></i>
+                    <span class="ml-2">Transactions</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
