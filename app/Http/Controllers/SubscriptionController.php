@@ -42,9 +42,9 @@ class SubscriptionController extends Controller
         ]);
         $amount = intval($convertedPrice);
         $shop_name = config('app.name');
-        $order_id = $order->id;
+        $order_id = $order->payment_reference;
         $message = "Order for training: {$training->title} - Amount: {$amount} CDF";
-        $success_url = route('page.order.verify', ['order_id' => $order_id]);
+        $success_url = route('page.order.verify', ['orderId' => $order_id]);
         $failure_url = route('page.training.create.subscription', $training);
 
 
@@ -78,11 +78,11 @@ class SubscriptionController extends Controller
         curl_close($curl);
 
         if ($err) {
-            Log::error("cURL Error: {$err}");
-            return redirect()->route('page.training.create.subscription', $training)->withErrors(['error' => "cURL Error #: {$err}"]);
+            Log::error('cURL Error: ' . $err);
+            return redirect()->route('page.training.create.subscription', $training)->withErrors(['error' => "cURL Error #:" . $err]);
         } else {
             $responseData = json_decode($response, true);
-            Log::info("cURL Response: {$response}");
+            Log::info('cURL Response: ' . $response);
             return redirect()->away($responseData['link']);
         }
     }
@@ -116,10 +116,10 @@ class SubscriptionController extends Controller
         curl_close($curl);
 
         if ($err) {
-            Log::error("cURL Error: {$err}");
-            return redirect()->route('page.training.create.subscription', $training)->withErrors(['error' => "cURL Error #: {$err}"]);
+            Log::error('cURL Error: ' . $err);
+            return redirect()->route('page.training.create.subscription', $training)->withErrors(['error' => "cURL Error #:" . $err]);
         } else {
-            Log::info("cURL Response: {$response}");
+            Log::info('cURL Response: ' . $response);
             $responseData = json_decode($response, true);
             if (isset($responseData['status']) && $responseData['status'] === 'success') {
                 // Update the order status to completed
