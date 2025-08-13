@@ -42,9 +42,9 @@ class SubscriptionController extends Controller
         ]);
         $amount = intval($convertedPrice);
         $shop_name = config('app.name');
-        $order_id = $order->payment_reference;
+        $order_id = $order->id;
         $message = "Order for training: {$training->title} - Amount: {$amount} CDF";
-        $success_url = route('page.order.verify', ['orderId' => $order_id]);
+        $success_url = route('page.order.verify', ['order_id' => $order_id]);
         $failure_url = route('page.training.create.subscription', $training);
 
 
