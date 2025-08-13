@@ -26,10 +26,11 @@ class CreateTrainingPage extends Component
             if ($this->form->cover_image) {
                 $imagePath = $this->form->cover_image->store('trainings', 'public');
                 $fields['cover_image'] = $imagePath;
+            } else {
+                $this->form->create($fields);
+                session()->flash('success', __('Training created successfully.'));
+                $this->redirect(route('admin.trainings'));
             }
-            $this->form->create($fields);
-            session()->flash('success', __('Training created successfully.'));
-            $this->redirect(route('admin.trainings'));
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
         }
