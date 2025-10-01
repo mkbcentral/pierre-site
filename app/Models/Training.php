@@ -20,6 +20,7 @@ class Training extends Model
         'status',
         'category_training_id',
     ];
+
     /**
      * Get the category that owns the training.
      */
@@ -34,5 +35,56 @@ class Training extends Model
     public function chapters()
     {
         return $this->hasMany(Chapter::class, 'training_id');
+    }
+
+    /**
+     * Get the orders for the training.
+     */
+    public function orders()
+    {
+        return $this->hasMany(OrderTraining::class);
+    }
+
+    /**
+     * Get the subscriptions for the training.
+     */
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    /**
+     * Scope a query to only include published trainings.
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('status', \App\Enums\TrainingStatusType::PUBLISHED);
+    }
+
+    /**
+     * Scope a query to filter by level.
+     */
+    public function scopeByLevel($query, $level)
+    {
+        return $query->where('level', $level);
+    }
+
+    /**
+     * Scope a query to filter by category.
+     */
+    public function scopeByCategory($query, $categoryId)
+    {
+        return $query->where('category_training_id', $categoryId);
+    }
+
+    /**
+     * Scope a query to search by title or description.
+     */
+    public function scopeSearch($query, $search)
+    {
+        return $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+        });
     }
 }

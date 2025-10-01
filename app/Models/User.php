@@ -52,4 +52,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(OrderTraining::class);
     }
+
+    /**
+     * Get the subscriptions for the user.
+     */
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    /**
+     * Get the posts for the user.
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

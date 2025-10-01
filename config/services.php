@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'lygos' => [
+        'api_url' => env('LYGOS_API_URL', 'https://api.lygos.io/'),
+        'api_key' => env('LYGOS_API_KEY'),
+    ],
+
 ];

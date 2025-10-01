@@ -23,7 +23,6 @@ return new class extends Migration
             $table->double('price')->default(0.0)->comment('Price of the training');
             $table->enum('level', LevelType::getValues())->default(LevelType::BEGINNER)->comment('Level of the training');
             $table->enum('status', TrainingStatusType::getValues())->default(TrainingStatusType::DRAFT)->comment('Status of the training');
-            $table->string('a')->comment('Title of the training');
             $table->foreignIdFor(CategoryTraining::class)
                 ->constrained('category_trainings')
                 ->cascadeOnDelete()

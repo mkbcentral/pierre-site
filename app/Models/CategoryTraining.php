@@ -13,4 +13,12 @@ class CategoryTraining extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get the trainings for the category.
+     */
+    public function trainings()
+    {
+        return $this->hasMany(Training::class, 'category_training_id');
+    }
 }

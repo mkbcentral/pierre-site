@@ -12,6 +12,7 @@ class Tool extends Model
         'tool_link',
         'icon',
         'price',
+        'status',
         'category_tool_id'
     ];
 
