@@ -16,7 +16,7 @@ class StoreTrainingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check() && Auth::user()->role === RoleType::admin;
+        return Auth::check() && Auth::user()->role === RoleType::ADMIN;
     }
 
     /**

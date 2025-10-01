@@ -1,5 +1,5 @@
  @php
-     $role = App\Enums\RoleType::admin(); // Example role, adjust as needed
+     $role = App\Enums\RoleType::ADMIN; // Example role, adjust as needed
      $isAdmin = auth()->check() && auth()->user()->role === $role;
  @endphp
  <!-- Navbar -->

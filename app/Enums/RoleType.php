@@ -13,17 +13,17 @@ use BenSampo\Enum\Enum;
  */
 final class RoleType extends Enum
 {
-    const admin = 'admin';
-    const student = 'student';
-    const member = 'member';
+    const ADMIN = 'admin';
+    const STUDENT = 'student';
+    const MEMBER = 'member';
 
     // description method can be added if needed
     public function description(): string
     {
         return match ($this) {
-            self::admin => 'Administrator',
-            self::student => 'Student',
-            self::member => 'Member',
+            self::ADMIN => 'Administrator',
+            self::STUDENT => 'Student',
+            self::MEMBER => 'Member',
         };
     }
 
@@ -31,9 +31,9 @@ final class RoleType extends Enum
     public function label(): string
     {
         return match ($this) {
-            self::admin => 'Admin',
-            self::student => 'Student',
-            self::member => 'Member',
+            self::ADMIN => 'Admin',
+            self::STUDENT => 'Student',
+            self::MEMBER => 'Member',
         };
     }
 }

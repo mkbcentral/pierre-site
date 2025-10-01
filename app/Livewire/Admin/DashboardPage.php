@@ -17,7 +17,7 @@ class DashboardPage extends Component
             'trainingCount' => Training::query()
                 ->where('status', StatusType::PUBLISHED)
                 ->count(),
-            'userCount' => User::query()->where('role', RoleType::student)->count(),
+            'userCount' => User::query()->where('role', RoleType::STUDENT)->count(),
             'revenueAmount' => 0,
             'postCount' => Post::query()
                 ->where('status', StatusType::PUBLISHED)

@@ -1,6 +1,5 @@
 <div>
-    <x-widget.flash-message />
-    <form id="contactForm" class="space-y-6" wire:submit.prevent="submit">
+    <form id="contactForm" class="space-y-6" wire:submit.prevent="sendEmail">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 <label for="name" class="block mb-2 text-gray-200">Nom complet</label>
@@ -18,7 +17,6 @@
                 @enderror
             </div>
         </div>
-
         <div>
             <label for="subject" class="block mb-2 text-gray-200">Formation d'intérêt</label>
             <select

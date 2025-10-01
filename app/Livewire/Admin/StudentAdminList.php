@@ -13,7 +13,7 @@ class StudentAdminList extends Component
     {
         return view('livewire.admin.student-admin-list', [
             'students' => User::query()
-                ->where('role', RoleType::student)
+                ->where('role', RoleType::STUDENT)
                 ->when(
                     $this->search,
                     function ($query) {
